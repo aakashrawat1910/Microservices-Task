@@ -2,7 +2,7 @@ version: '3'
 
 services:
   user-service:
-    image: yourusername/microservices-user-service:latest
+    image: aakashrawat1910/microservices-user-service:latest
     container_name: user-service
     ports:
       - "3000:3000"
@@ -10,7 +10,7 @@ services:
       - microservices-network
 
   product-service:
-    image: yourusername/microservices-product-service:latest
+    image: aakashrawat1910/microservices-product-service:latest
     container_name: product-service
     ports:
       - "3001:3001"
@@ -18,7 +18,7 @@ services:
       - microservices-network
 
   order-service:
-    image: yourusername/microservices-order-service:latest
+    image: aakashrawat1910/microservices-order-service:latest
     container_name: order-service
     ports:
       - "3002:3002"
@@ -26,7 +26,7 @@ services:
       - microservices-network
 
   gateway-service:
-    image: yourusername/microservices-gateway-service:latest
+    image: aakashrawat1910/microservices-gateway-service:latest
     container_name: gateway-service
     ports:
       - "3003:3003"
