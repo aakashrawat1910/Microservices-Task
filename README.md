@@ -1,193 +1,36 @@
 # Microservices Application
 
-This repository contains a containerized microservices architecture built with Node.js, Docker, and Docker Compose. The application consists of four interconnected services: User, Product, Order, and a Gateway service that acts as an API gateway.
+A containerized microservices application built with Node.js, Docker, and Docker Compose.
 
-## Architecture Overview
+## Overview
 
-The application is structured as follows:
+This project consists of four independent microservices:
 
-- **User Service** (Port 3000): Manages user data and authentication
-- **Product Service** (Port 3001): Handles product catalog and inventory
-- **Order Service** (Port 3002): Processes customer orders
-- **Gateway Service** (Port 3003): Acts as an API gateway, routing requests to appropriate services
+- **User Service** (Port 3000): Manages user data
+- **Product Service** (Port 3001): Handles product information
+- **Order Service** (Port 3002): Manages order processing
+- **Gateway Service** (Port 3003): API gateway for routing requests
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Local Development](#local-development)
+- [Containerization](#containerization)
+- [Deployment on EC2](#deployment-on-ec2)
+- [Testing](#testing)
+- [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
 
-- Docker and Docker Compose installed on your system
-- Docker Hub account for image storage
-- Git (for cloning the repository)
-- AWS account (for EC2 deployment)
-
-## Building and Deploying
-
-### 1. Building Docker Images Locally
-
-Navigate to your project directory and build images for each service:
-
-```bash
-# Build User Service
-docker build -t yourusername/microservices-user-service:latest ./user-service
-
-# Build Product Service
-docker build -t yourusername/microservices-product-service:latest ./product-service
-
-# Build Order Service
-docker build -t yourusername/microservices-order-service:latest ./order-service
-
-# Build Gateway Service
-docker build -t yourusername/microservices-gateway-service:latest ./gateway-service
-```
-
-Replace `yourusername` with your Docker Hub username.
-
-### 2. Pushing Images to Docker Hub
-
-First, log in to Docker Hub:
-
-```bash
-docker login
-# Enter your Docker Hub credentials when prompted
-```
-
-Then push your images:
-
-```bash
-docker push yourusername/microservices-user-service:latest
-docker push yourusername/microservices-product-service:latest
-docker push yourusername/microservices-order-service:latest
-docker push yourusername/microservices-gateway-service:latest
-```
-
-### 3. Deploying on EC2
-
-For detailed instructions on deploying to AWS EC2 using Docker Hub images, see the [EC2 Deployment Guide](./EC2_DEPLOYMENT.md).
-
-### 4. Running Locally with Docker Compose
-
-For local testing using Docker Hub images:
-
-```bash
-docker-compose up
-```
-
-To run in detached mode:
-```bash
-docker-compose up -d
-```
-
-To stop all services:
-```bash
-docker-compose down
-```
-
-## Testing the Services
-
-Once all services are up and running, you can test them using the following endpoints:
-
-### Direct Service Access
-
-#### User Service
-```bash
-curl http://localhost:3000/users
-```
-Or open in browser: [http://localhost:3000/users](http://localhost:3000/users)
-
-#### Product Service
-```bash
-curl http://localhost:3001/products
-```
-Or open in browser: [http://localhost:3001/products](http://localhost:3001/products)
-
-#### Order Service
-```bash
-curl http://localhost:3002/orders
-```
-Or open in browser: [http://localhost:3002/orders](http://localhost:3002/orders)
-
-### Via Gateway Service
-
-#### Users API
-```bash
-curl http://localhost:3003/api/users
-```
-
-#### Products API
-```bash
-curl http://localhost:3003/api/products
-```
-
-#### Orders API
-```bash
-curl http://localhost:3003/api/orders
-```
-
-## Troubleshooting
-
-### Container Issues
-
-If a service is not responding:
-
-1. Check container status:
-```bash
-docker-compose ps
-```
-
-2. View logs for a specific service:
-```bash
-docker-compose logs user-service
-```
-Replace `user-service` with the appropriate service name.
-
-3. Restart a specific service:
-```bash
-docker-compose restart user-service
-```
-
-### Network Issues
-
-1. Ensure all containers are on the same network:
-```bash
-docker network inspect microservices-network
-```
-
-2. Verify that the service is listening on the correct port inside the container:
-```bash
-docker exec -it user-service netstat -tulpn
-```
-
-### Docker Hub Issues
-
-1. If you're unable to push to Docker Hub, verify your credentials:
-```bash
-docker login
-```
-
-2. Check image names match your Docker Hub repository:
-```bash
-docker images
-```
-
-## Screenshots
-
-### Services Running
-![Services Running](./screenshots/services-running.png)
-
-### User Service Response
-![User Service](./screenshots/user-service.png)
-
-### Product Service Response
-![Product Service](./screenshots/product-service.png)
-
-### Order Service Response
-![Order Service](./screenshots/order-service.png)
-
-### Gateway Service Response
-![Gateway Service](./screenshots/gateway-service.png)
+- Node.js (v14 or higher)
+- Docker
+- Docker Compose
+- Git
 
 ## Project Structure
 
 ```
-microservices-task/
 ├── user-service/
 │   ├── app.js
 │   ├── package.json
@@ -205,6 +48,225 @@ microservices-task/
 │   ├── package.json
 │   └── Dockerfile
 ├── docker-compose.yml
-├── deploy.sh
 └── README.md
 ```
+
+## Local Development
+
+### Running Services Locally
+
+To run each service locally:
+
+1. Navigate to each service directory
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the service:
+   ```
+   node app.js
+   ```
+
+**User Service:**
+![User Service Running Locally](path/to/user-service-local-screenshot.png)
+
+**Product Service:**
+![Product Service Running Locally](path/to/product-service-local-screenshot.png)
+
+**Order Service:**
+![Order Service Running Locally](path/to/order-service-local-screenshot.png)
+
+**Gateway Service:**
+![Gateway Service Running Locally](path/to/gateway-service-local-screenshot.png)
+
+## Containerization
+
+### Building Docker Images
+
+Build Docker images for each service:
+
+```bash
+docker build -t aakashrawat1910/microservices-user-service:latest ./user-service
+docker build -t aakashrawat1910/microservices-product-service:latest ./product-service
+docker build -t aakashrawat1910/microservices-order-service:latest ./order-service
+docker build -t aakashrawat1910/microservices-gateway-service:latest ./gateway-service
+```
+
+![Building Docker Images](path/to/build-images-screenshot.png)
+
+### Pushing Images to Docker Hub
+
+Make sure to authenticate with Docker Hub:
+
+```bash
+docker login
+```
+
+Then push the images:
+
+```bash
+docker push aakashrawat1910/microservices-user-service:latest
+docker push aakashrawat1910/microservices-product-service:latest
+docker push aakashrawat1910/microservices-order-service:latest
+docker push aakashrawat1910/microservices-gateway-service:latest
+```
+
+![Pushing to Docker Hub](path/to/docker-push-screenshot.png)
+
+### Docker Compose
+
+The `docker-compose.yml` file is configured to run all four services together with proper networking and port mappings.
+
+To start the application using Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+This will start all services in detached mode.
+
+To stop the application:
+
+```bash
+docker-compose down
+```
+
+## Deployment on EC2
+
+### Setting up EC2 Instance
+
+1. Launch an EC2 instance with Ubuntu
+2. Configure security groups to allow inbound traffic on ports 3000-3003
+3. Connect to your instance using SSH
+
+![EC2 Instance Creation](path/to/ec2-creation-screenshot.png)
+
+### Installing Docker and Docker Compose
+
+```bash
+# Update package lists
+sudo apt update
+
+# Install Docker
+sudo apt install docker.io -y
+
+# Start and enable Docker service
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add current user to docker group (optional)
+sudo usermod -aG docker $USER
+
+# Install Docker Compose
+sudo apt install docker-compose -y
+```
+
+![Docker Installation](path/to/docker-installation-screenshot.png)
+
+### Deploying the Application
+
+1. Pull the Docker images:
+
+```bash
+sudo docker pull aakashrawat1910/microservices-user-service:latest
+sudo docker pull aakashrawat1910/microservices-product-service:latest
+sudo docker pull aakashrawat1910/microservices-order-service:latest
+sudo docker pull aakashrawat1910/microservices-gateway-service:latest
+```
+
+![Pulling Docker Images](path/to/docker-pull-screenshot.png)
+
+2. Create a `docker-compose.yml` file:
+
+```bash
+nano docker-compose.yml
+```
+
+Paste the Docker Compose configuration and save.
+
+3. Start the application:
+
+```bash
+sudo docker-compose up -d
+```
+
+![Docker Compose Up](path/to/docker-compose-up-screenshot.png)
+
+## Testing
+
+### Testing Endpoints
+
+You can test the services using curl or a web browser:
+
+```bash
+curl http://localhost:3000/api/users
+curl http://localhost:3001/api/products
+curl http://localhost:3002/api/orders
+curl http://localhost:3003/api/gateway
+```
+
+Or replace `localhost` with your EC2 instance's public IP:
+
+```bash
+curl http://<your-ec2-public-ip>:3000/api/users
+```
+
+**User Service Endpoint:**
+![User Service Test](path/to/user-service-test-screenshot.png)
+
+**Product Service Endpoint:**
+![Product Service Test](path/to/product-service-test-screenshot.png)
+
+**Order Service Endpoint:**
+![Order Service Test](path/to/order-service-test-screenshot.png)
+
+**Gateway Service Endpoint:**
+![Gateway Service Test](path/to/gateway-service-test-screenshot.png)
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+1. **Services cannot connect to each other:**
+   - Ensure all services are running (`docker ps`)
+   - Check if the Docker network is properly configured
+   - Verify service names match the ones in Docker Compose file
+
+2. **Port conflicts:**
+   - Check if ports 3000-3003 are already in use
+   - Run `sudo netstat -tulpn | grep <port>` to identify processes
+   - Either stop the conflicting process or change the port mapping in docker-compose.yml
+
+3. **Docker images not working:**
+   - Try rebuilding the images locally
+   - Check Dockerfile for errors
+   - Ensure package.json and dependencies are correctly configured
+
+4. **EC2 connection issues:**
+   - Verify security group settings allow traffic on required ports
+   - Check if the instance is running
+   - Confirm you are using the correct public IP address
+
+### Logs
+
+To check the logs for a specific service:
+
+```bash
+docker-compose logs user-service
+docker-compose logs product-service
+docker-compose logs order-service
+docker-compose logs gateway-service
+```
+
+For real-time logs:
+
+```bash
+docker-compose logs -f service-name
+```
+
+---
+
+## Repository
+
+This project is available on GitHub:
+[https://github.com/aakashrawat1910/Microservices-Task](https://github.com/aakashrawat1910/Microservices-Task)
