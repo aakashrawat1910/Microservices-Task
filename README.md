@@ -68,16 +68,23 @@ To run each service locally:
    ```
 
 **User Service:**
-![User Service Running Locally](path/to/user-service-local-screenshot.png)
+![image](https://github.com/user-attachments/assets/b931143a-f8ec-4df6-8a22-0002f544ab23)
+![image](https://github.com/user-attachments/assets/cf30c03d-d950-4cfd-9b82-80e13aa29ba1)
 
 **Product Service:**
-![Product Service Running Locally](path/to/product-service-local-screenshot.png)
+![image](https://github.com/user-attachments/assets/5414a704-66aa-4f22-be5c-4acdd8a0a474)
+![image](https://github.com/user-attachments/assets/869351e0-6d84-4f25-ba33-9f18ba5bc604)
+
 
 **Order Service:**
-![Order Service Running Locally](path/to/order-service-local-screenshot.png)
+![image](https://github.com/user-attachments/assets/21ec6ab4-08df-4018-8f6a-d609fa919692)
+![image](https://github.com/user-attachments/assets/77d7ad57-bfc3-4781-833f-3aa45727299f)
+
 
 **Gateway Service:**
-![Gateway Service Running Locally](path/to/gateway-service-local-screenshot.png)
+![image](https://github.com/user-attachments/assets/850f0e4b-f1d0-49a7-98e5-1c4a6a0f2ddb)
+![image](https://github.com/user-attachments/assets/31de87e3-5382-4ecf-b9ea-51c9259673ea)
+
 
 ## Containerization
 
@@ -92,7 +99,8 @@ docker build -t aakashrawat1910/microservices-order-service:latest ./order-servi
 docker build -t aakashrawat1910/microservices-gateway-service:latest ./gateway-service
 ```
 
-![Building Docker Images](path/to/build-images-screenshot.png)
+![image](https://github.com/user-attachments/assets/8ed4f2b5-c757-4471-8d8a-86c3239a416f)
+
 
 ### Pushing Images to Docker Hub
 
@@ -111,7 +119,8 @@ docker push aakashrawat1910/microservices-order-service:latest
 docker push aakashrawat1910/microservices-gateway-service:latest
 ```
 
-![Pushing to Docker Hub](path/to/docker-push-screenshot.png)
+![image](https://github.com/user-attachments/assets/2c2a4dd9-d6eb-48ff-96d0-bee3d1a3a082)
+
 
 ### Docker Compose
 
@@ -139,7 +148,8 @@ docker-compose down
 2. Configure security groups to allow inbound traffic on ports 3000-3003
 3. Connect to your instance using SSH
 
-![EC2 Instance Creation](path/to/ec2-creation-screenshot.png)
+![image](https://github.com/user-attachments/assets/caf6c1a4-2887-4aed-8fc6-eee1af5e9122)
+
 
 ### Installing Docker and Docker Compose
 
@@ -161,7 +171,9 @@ sudo usermod -aG docker $USER
 sudo apt install docker-compose -y
 ```
 
-![Docker Installation](path/to/docker-installation-screenshot.png)
+![image](https://github.com/user-attachments/assets/bf4b37fb-040a-42e5-ad57-97ba8892f6bd)
+![image](https://github.com/user-attachments/assets/587de661-470e-4dd4-8023-71dfb909349d)
+
 
 ### Deploying the Application
 
@@ -174,7 +186,8 @@ sudo docker pull aakashrawat1910/microservices-order-service:latest
 sudo docker pull aakashrawat1910/microservices-gateway-service:latest
 ```
 
-![Pulling Docker Images](path/to/docker-pull-screenshot.png)
+![image](https://github.com/user-attachments/assets/3054c4e6-506f-4ad0-943d-d57f364c33c0)
+
 
 2. Create a `docker-compose.yml` file:
 
@@ -190,7 +203,8 @@ Paste the Docker Compose configuration and save.
 sudo docker-compose up -d
 ```
 
-![Docker Compose Up](path/to/docker-compose-up-screenshot.png)
+![image](https://github.com/user-attachments/assets/f73c66ef-58fe-4d4f-944f-6b0ac609ea8d)
+
 
 ## Testing
 
@@ -212,16 +226,20 @@ curl http://<your-ec2-public-ip>:3000/api/users
 ```
 
 **User Service Endpoint:**
-![User Service Test](path/to/user-service-test-screenshot.png)
+![image](https://github.com/user-attachments/assets/a7365070-62d3-47f7-a3e4-e2129b618418)
+
 
 **Product Service Endpoint:**
-![Product Service Test](path/to/product-service-test-screenshot.png)
+![image](https://github.com/user-attachments/assets/37b59cc8-997a-442a-bd23-f2685d4c74de)
+
 
 **Order Service Endpoint:**
-![Order Service Test](path/to/order-service-test-screenshot.png)
+![image](https://github.com/user-attachments/assets/ca0f1b9e-e386-4000-8473-7599752856b1)
+
 
 **Gateway Service Endpoint:**
-![Gateway Service Test](path/to/gateway-service-test-screenshot.png)
+![image](https://github.com/user-attachments/assets/497a2b12-5c7b-4bbf-bb86-2cdaa8a2ad99)
+
 
 ## Troubleshooting
 
